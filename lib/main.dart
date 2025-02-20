@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:quizz_game/pages/auth_page.dart';
 import 'package:quizz_game/pages/login_page.dart';
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MainApp());
 }
 
@@ -9,8 +17,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      home: LoginPage(),
+    return  const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AuthPage(),
     );
   }
 }
