@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quizz_game/components/components.dart';
+import 'package:quizz_game/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -171,12 +172,18 @@ class _LoginPageState extends State<LoginPage> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                       // google button
-                                      SquareTile(imagePath: 'lib/images/google.png'),
+                                      SquareTile(
+                                        onTap: () => AuthService().signInWithGoogle(),
+                                        imagePath: 'lib/images/google.png',
+                                      ),
                                       
                                       const SizedBox(width: 10),
                       
                                       // apple button
-                                      SquareTile(imagePath: 'lib/images/apple.png'),
+                                      SquareTile(
+                                        onTap: () {},
+                                        imagePath: 'lib/images/apple.png',
+                                      ),
                                   ],
                               ),
                       
