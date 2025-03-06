@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quizz_game/components/components.dart';
 import 'package:quizz_game/services/auth_service.dart';
+import 'package:quizz_game/errors/error_utils.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -43,26 +44,8 @@ class _LoginPageState extends State<LoginPage> {
        // pop the loading circle
         Navigator.pop(context);
         // show error message
-        showErrorMessage(e.code);
+        showErrorMessage(context, e.code);
       }
-    }
-
-    // error message to user
-    void showErrorMessage(String message) {
-      showDialog(
-        context: context, 
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: Colors.purple,
-            title: Center(
-              child: Text(
-                message,
-                style: const TextStyle(color: Colors.white),
-              ),
-            ),
-          );
-        },
-      );
     }
 
     @override
