@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizz_game/pages/auth_page.dart';
-import 'package:quizz_game/pages/login_page.dart';
+import 'package:quizz_game/pages/home_page.dart';
+import 'package:quizz_game/quiz/create_quiz.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -17,9 +18,20 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AuthPage(),
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/home':
+            return MaterialPageRoute(builder: (context) => HomePage());
+          case '/create_quiz':
+            return MaterialPageRoute(builder: (context) => CreateQuiz());
+          default:
+            return null;
+        }
+      },
     );
   }
 }
+
