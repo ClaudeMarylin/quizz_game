@@ -41,6 +41,14 @@ class HomePage extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, '/create_quiz');
               },
             ),
+            const SizedBox(height: 20),
+            
+            MyButton(
+              text: "Résoudre un Quiz",
+              onTap: () {
+                Navigator.pushReplacementNamed(context, '/create_quiz');
+              },
+            ),
           ],
         ),
       ),
