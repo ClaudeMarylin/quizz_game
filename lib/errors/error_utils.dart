@@ -9,7 +9,7 @@ void showErrorMessage(BuildContext context, String message) {
         style: const TextStyle(color: Colors.white),
         textAlign: TextAlign.center,
       ),
-      backgroundColor: Colors.red,
+      backgroundColor: Theme.of(context).colorScheme.errorContainer,
       behavior: SnackBarBehavior.floating,
       margin: const EdgeInsets.all(25), // Ajoute un peu d'espace autour
       elevation: 6, // Ajoute une ombre pour un meilleur effet
