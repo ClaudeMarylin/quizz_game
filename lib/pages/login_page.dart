@@ -52,6 +52,10 @@ class _LoginPageState extends State<LoginPage> {
     Widget build(BuildContext context) {
         return Scaffold(
             backgroundColor: Colors.grey[300],
+            appBar: MyAppBar(
+              text: "Connexion",
+            ),
+            drawer: MyDrawer(),
             body: SafeArea(
                 child: Center(
                     child: SingleChildScrollView(
