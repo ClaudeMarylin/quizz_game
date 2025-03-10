@@ -50,9 +50,8 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
-      appBar: AppBar(
-        backgroundColor: Colors.red[300],
-        title: const Text("Informations personnelles"),
+      appBar: MyAppBar(
+        text: "Informations personnelles",
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
