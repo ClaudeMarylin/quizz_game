@@ -11,7 +11,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.red[300],
+      backgroundColor: Theme.of(context).colorScheme.primary,
       centerTitle: true, // Centre le titre sur Android
       title: Text(
         text,
