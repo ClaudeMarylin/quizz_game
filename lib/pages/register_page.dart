@@ -89,6 +89,9 @@ class _RegisterPageState extends State<RegisterPage> {
     Widget build(BuildContext context) {
         return Scaffold(
             backgroundColor: Colors.grey[300],
+            appBar: MyAppBar(
+              text: "Création compte",
+            ),
             body: SafeArea(
                 child: Center(
                     child: SingleChildScrollView(
