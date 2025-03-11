@@ -55,7 +55,8 @@ class _CreateQuizState extends State<CreateQuiz> {
     );
 
     try {
-      await FirebaseFirestore.instance.collection("quizzes").add({
+      // Crée un quiz et récupère une référence à ce document
+      final quizRef = await FirebaseFirestore.instance.collection("quizzes").add({
         "title": titleController.text.trim(),
         "description": descriptionController.text.trim(),
         "category": selectedCategory == "Autre"
@@ -66,6 +67,12 @@ class _CreateQuizState extends State<CreateQuiz> {
         "authorId": user.uid,
         "createdAt": Timestamp.now(),
       });
+
+      // Récupérer l'ID généré automatiquement
+      final quizId = quizRef.id;
+
+      // Mettre à jour le document pour inclure son ID
+      await quizRef.update({"id": quizId});
 
       Navigator.pop(context); // Fermer le chargement
       Navigator.pop(context); // Retourner à la page précédente
@@ -199,12 +206,14 @@ class _CreateQuizState extends State<CreateQuiz> {
                   Navigator.pushReplacementNamed(context, '/home');
                 },
               ),
+
               Expanded( // Permet au bouton d'occuper l'espace central
                 child: MyButton(
                   onTap: createQuiz,
                   text: "Créer le quiz",
                 ),
               ),
+              
               IconButton(
                 icon: const Icon(Icons.person, color: Colors.white),
                 onPressed: () {
