@@ -55,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
             appBar: MyAppBar(
               text: "Connexion",
             ),
-            drawer: MyDrawer(),
+            
             body: SafeArea(
                 child: Center(
                     child: SingleChildScrollView(
