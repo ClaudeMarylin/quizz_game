@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String text;
@@ -12,7 +13,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.primary,
-      centerTitle: true, // Centre le titre sur Android
+      centerTitle: true,
       title: Text(
         text,
         style: const TextStyle(
@@ -21,12 +22,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontSize: 16,
         ),
       ),
-      leading: IconButton(
-        icon: const Icon(Icons.menu, color: Colors.white),
-        onPressed: () {
-          Scaffold.of(context).openDrawer(); // Ouvre le Drawer
-        },
-      ),
+      leading: FirebaseAuth.instance.currentUser != null 
+        ? IconButton(
+            icon: const Icon(Icons.menu, color: Colors.white),
+            onPressed: () {
+              Scaffold.of(context).openDrawer(); // Ouvre le Drawer
+            },
+          )
+        : null, // Cache le bouton si l'utilisateur n'est pas connecté
     );
   }
 
